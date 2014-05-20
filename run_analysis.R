@@ -1,5 +1,7 @@
 run_analysis <- function(){
         
+        # Read file with labels and list files structure for meger.
+        
         activity_labes = read.csv("./UCI HAR Dataset/activity_labels.txt",head=FALSE,sep=" ")
         features = read.csv("./UCI HAR Dataset/features.txt",head=FALSE,sep=" ")
         
@@ -39,11 +41,12 @@ run_analysis <- function(){
                         
                         if (basename(List_File_test_temp[i]) == "y.txt"){
                                 
-                                datcombine = merge(datcombine,activity_labes,by="V1")    
+                                datcombine = merge(datcombine,activity_labes,by="V1")
+                                names(datcombine)[1] = "activity_labes"
+                                names(datcombine)[2] = "activity"
                                 write.csv(datcombine,file=basename(List_File_test_temp[i]),row.names = FALSE)
                                 y = datcombine
-                                names(y)[1] = "activity_labes"
-                                names(y)[2] = "activity"
+                                
                         }
                         
                         else
@@ -71,6 +74,7 @@ run_analysis <- function(){
         tiny_x = x[,sort(c(split_mean,split_std))]      
         merge_subject_activ = cbind(subject,y)      
         tiny_data = cbind(merge_subject_activ,tiny_x)
+        names(tiny_data)[1] = "subject"
         write.table(tiny_data,file="./tiny_data.txt",row.names = FALSE)
         
         
@@ -78,9 +82,10 @@ run_analysis <- function(){
         
         x = read.table("./X.txt",sep=",", header=TRUE)
         subject = read.table("./subject.txt",sep=",",header=TRUE)
-        merge = cbind(subject,x,deparse.level=1)
+        y = read.table("./y.txt",sep=",",header=TRUE)
+        merge = cbind(subject,y,x,deparse.level=1)
         names(merge)[1] = "subject"
-        subject_mean  = aggregate(merge, by=list(merge$subject), FUN='mean')
+        subject_mean  = aggregate(merge[,4:length(merge)], by=list(merge$subject,merge$activity), FUN='mean')
         write.table(subject_mean,"./tiny_dat_by_subj.txt",row.names = FALSE)
-        tiny_data
+        
 }
