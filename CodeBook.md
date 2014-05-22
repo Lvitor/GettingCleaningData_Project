@@ -1,5 +1,7 @@
-Getting Cleaning Data_Coursera_Project
+Getting and Cleaning Data Course Project
 ===========================
 
-Script for project of Getting and Cleaning Data - Coursera
-Teste
+CodeBook for project of Getting and Cleaning Data - Coursera
+
+This script 
+
