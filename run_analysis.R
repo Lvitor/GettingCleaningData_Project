@@ -59,7 +59,7 @@ run_analysis <- function(){
                             
                          
                         }                          
-                       #write.csv(datcombine,file=basename(List_File_test_temp[i]),row.names = FALSE)
+                       write.csv(datcombine,file=basename(List_File_test_temp[i]),row.names = FALSE)
                 }
              }
         
