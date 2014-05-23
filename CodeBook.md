@@ -1,4 +1,4 @@
-#Introduction
+#CookBook
 
 The script `run_analysis.R`
 - Need the data from
