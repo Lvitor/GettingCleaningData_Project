@@ -11,7 +11,8 @@ The script `run_analysis.R`
   measurements for a particular subject and activity are averaged into one value
   and the tidy data set contains these mean values only. tiny_dat_by_subj has 563 columns.
 - The structu of columns from original for new tiny are this:
-Col_1:  Group.1 - Subject (30 in total)
+
+* Col_1:  Group.1 - Subject (30 in total)
 Col_2:  Group.2 - Activity that subject are doing 6 possibilities.
 Col_3:	tBodyAcc-mean()-X	Was rename to 	tBodyAcc.mean...X
 Col_4:	tBodyAcc-mean()-Y	Was rename to 	tBodyAcc.mean...Y
