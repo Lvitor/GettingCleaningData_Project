@@ -2,7 +2,7 @@
 
 The script `run_analysis.R`
 - Need the data from
-  [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) been in working directory
+  [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) in working directory
 - Merges the training and test sets to create one data set
 - Replaces `activity` values in the dataset with descriptive activity names
 - Appropriately labels the columns with descriptive names
@@ -577,7 +577,6 @@ The script `run_analysis.R`
 * Col_563:	angle(Z,gravityMean)	rename to 	angle.Z.gravityMean.
 
 
-
-
-tiny_data
+- create a file call `tiny_data`
+- 
 
