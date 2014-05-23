@@ -2,7 +2,7 @@ run_analysis <- function(){
         
         # Read file with labels and list files structure for meger.
         
-        activity_labes = read.csv("./UCI HAR Dataset/activity_labels.txt",head=FALSE,sep=" ")
+        activity_labes = read.table("./UCI HAR Dataset/activity_labels.txt",head=FALSE,sep=" ")
         features = read.csv("./UCI HAR Dataset/features.txt",head=FALSE,sep=" ")
         
         activity_labes_transp = t(activity_labes[,2])
@@ -29,7 +29,7 @@ run_analysis <- function(){
                                 sep="",head=FALSE,dec=".")
                         
                         datcombine = rbind(dat_train,dat_test)
-                        datcombine = sapply(datcombine,as.numeric)
+                        #datcombine = sapply(datcombine,as.numeric)
                         
                         if (basename(List_File_test_temp[i]) == "X.txt"){
                                 
@@ -41,7 +41,7 @@ run_analysis <- function(){
                         
                         if (basename(List_File_test_temp[i]) == "y.txt"){
                                 
-                                datcombine = merge(datcombine,activity_labes,by="V1")
+                                datcombine = merge(datcombine,activity_labes,by="V1",sort=FALSE)
                                 names(datcombine)[1] = "activity_labes"
                                 names(datcombine)[2] = "activity"
                                 write.csv(datcombine,file=basename(List_File_test_temp[i]),row.names = FALSE)
@@ -58,8 +58,8 @@ run_analysis <- function(){
                                 write.csv(datcombine,file=basename(List_File_test_temp[i]),row.names = FALSE)
                             
                          
-                        }                          
-                       write.csv(datcombine,file=basename(List_File_test_temp[i]),row.names = FALSE)
+                        }                       
+                       
                 }
              }
         
@@ -80,11 +80,9 @@ run_analysis <- function(){
         
         #Create a tiny data with mean for each variable for each subject
         
-        x = read.table("./X.txt",sep=",", header=TRUE)
-        subject = read.table("./subject.txt",sep=",",header=TRUE)
-        y = read.table("./y.txt",sep=",",header=TRUE)
+        
         merge = cbind(subject,y,x,deparse.level=1)
-        names(merge)[1] = "subject"
+        names(merge)[1] = "subject"        
         subject_mean  = aggregate(merge[,4:length(merge)], by=list(merge$subject,merge$activity), FUN='mean')
         write.table(subject_mean,"./tiny_dat_by_subj.txt",row.names = FALSE)
         
