@@ -16,5 +16,5 @@ The script `run_analysis.R`
 * Col_2:  Group.2 - Activity that subject are doing 6 possibilities.
 
 
-- create a file call `tiny_data`
+- create a file call `tiny_data` with has all dataset with only column with mean and std variable.
 
