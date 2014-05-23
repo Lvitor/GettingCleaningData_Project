@@ -17,5 +17,4 @@ The script `run_analysis.R`
 
 
 - create a file call `tiny_data`
-- 
 
